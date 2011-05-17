@@ -419,7 +419,7 @@
 		 */
 		standardSectionsAndGroupingContentComparator: function(domobj, markupObject) {
 			if  (domobj.nodeType === 1) {
-				if (markupObject[0].tagName && Aloha.Selection.replacingElements[ domobj.tagName.toLowerCase() ] && Aloha.Selection.replacingElements[ domobj.tagName.toLowerCase() ].indexOf(markupObject[0].tagName.toLowerCase()) != -1) {
+				if (markupObject[0].tagName && Aloha.Selection.replacingElements[ domobj.tagName.toLowerCase() ] && $.inArray(markupObject[0].tagName.toLowerCase(),Aloha.Selection.replacingElements[ domobj.tagName.toLowerCase() ]) != -1) {
 					return true;
 				}
 			} else {
@@ -1278,7 +1278,7 @@
 				return false;
 			}
 			// if something is defined, but the specifig tag is not in the list
-			if (this.allowedToStealElements[ markupName ].indexOf(nodeName) == -1) {
+			if ($.inArray(nodeName, this.allowedToStealElements[ markupName ]) == -1) {
 				return false;
 			}
 			return true;
@@ -1321,8 +1321,8 @@
 		 * @hide
 		 */
 		canTag1WrapTag2: function(t1, t2) {
-			t1 = (t1 == '#text')?'textNode':t1.toLowerCase();
-			t2 = (t2 == '#text')?'textNode':t2.toLowerCase();
+			t1 = (t1 === '#text')?'textNode':t1.toLowerCase();
+			t2 = (t2 === '#text')?'textNode':t2.toLowerCase();
 			if (!this.tagHierarchy[ t1 ]) {
 				// Aloha.Log.warn(this, t1 + ' is an unknown tag to the method canTag1WrapTag2 (paramter 1). Sadfully allowing the wrapping...');
 				return true;
@@ -1332,7 +1332,7 @@
 				return true;
 			}
 			var t1Array = this.tagHierarchy[ t1 ],
-				returnVal = (t1Array.indexOf( t2 ) != -1) ? true : false;
+				returnVal = ($.inArray(t2,t1Array) != -1) ? true : false;
 			return returnVal;
 		},
 
