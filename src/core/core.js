@@ -163,16 +163,16 @@ Aloha = jQuery.extend(Aloha,{
 			}
 
 			// OS detection
-			if (navigator.appVersion.indexOf('Win') != -1) {
+			if ($.inArray('Win',navigator.appVersion) != -1) {
 				this.OSName = 'Win';
 			}
-			if (navigator.appVersion.indexOf('Mac') != -1) {
+			if ($.inArray('Mac',navigator.appVersion) != -1) {
 				this.OSName = 'Mac';
 			}
-			if (navigator.appVersion.indexOf('X11') != -1) {
+			if ($.inArray('X11',navigator.appVersion) != -1) {
 				this.OSName = 'Unix';
 			}
-			if (navigator.appVersion.indexOf('Linux') != -1) {
+			if ($.inArray('Linux',navigator.appVersion) != -1) {
 				this.OSName = 'Linux';
 			}
 
@@ -598,7 +598,7 @@ Aloha = jQuery.extend(Aloha,{
 		unregisterEditable: function (editable) {
 
 			// Find the index
-			var id = this.editables.indexOf( editable );
+			var id = $.inArray(editable ,this.editables);
 			// Remove it if really found!
 			if (id != -1) {
 				this.editables.splice(id, 1);

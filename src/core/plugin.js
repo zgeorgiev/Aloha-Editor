@@ -106,7 +106,7 @@
 						Aloha.loadPlugin(pluginName);
 					} catch(e) {
 						Aloha.Log.error(Aloha, "Error while loading " + pluginName);
-						delete plugins[plugins.indexOf(pluginName)];
+						delete plugins[$.inArray(pluginName,plugins)];
 					}
 				});
 				window.setInterval(function() { 
